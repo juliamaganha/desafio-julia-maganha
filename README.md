@@ -1,51 +1,48 @@
-# desafio-julia-maganha
-Resolução do Desafio Técnico
-
-class CaixaDaLanchonete {
-    constructor() {
-        this.cardapio = {
-            cafe: { descricao: 'Café', valor: 3.00 },
-            chantily: { descricao: 'Chantily (extra do Café)', valor: 1.50 },
-            suco: { descricao: 'Suco Natural', valor: 6.20 },
-            sanduiche: { descricao: 'Sanduíche', valor: 6.50 },
-            queijo: { descricao: 'Queijo (extra do Sanduíche)', valor: 2.00 },
-            salgado: { descricao: 'Salgado', valor: 7.25 },
-            combo1: { descricao: '1 Suco e 1 Sanduíche', valor: 9.50 },
-            combo2: { descricao: '1 Café e 1 Sanduíche', valor: 7.50 }
-        };
-        this.formasDePagamento = ['dinheiro', 'debito', 'credito'];
-    }
-    calcularValorDaCompra(formaDePagamento, itens) {
-        if (!this.formasDePagamento.includes(formaDePagamento)) {
-            return "Forma de pagamento inválida!";
+    class CaixaDaLanchonete {
+        constructor() {
+            this.cardapio = {
+                cafe: { descricao: 'Café', valor: 3.00 },
+                chantily: { descricao: 'Chantily (extra do Café)', valor: 1.50 },
+                suco: { descricao: 'Suco Natural', valor: 6.20 },
+                sanduiche: { descricao: 'Sanduíche', valor: 6.50 },
+                queijo: { descricao: 'Queijo (extra do Sanduíche)', valor: 2.00 },
+                salgado: { descricao: 'Salgado', valor: 7.25 },
+                combo1: { descricao: '1 Suco e 1 Sanduíche', valor: 9.50 },
+                combo2: { descricao: '1 Café e 1 Sanduíche', valor: 7.50 }
+            };
+            this.formasDePagamento = ['dinheiro', 'debito', 'credito'];
         }
-    
-        if (itens.length === 0) {
-            return "Não há itens no carrinho de compra!";
-        }
-    
-        let total = 0;
-        let itemsMap = {};
-        let hasCafe = false;
-        let hasSanduiche = false;
-    
-        for (const item of itens) {
-            const [codigo, quantidade] = item.split(',');
-            const menuItem = this.cardapio[codigo];
-    
-            if (!menuItem) {
-                return "Item inválido!";
+        calcularValorDaCompra(formaDePagamento, itens) {
+            if (!this.formasDePagamento.includes(formaDePagamento)) {
+                return "Forma de pagamento inválida!";
             }
-    
-            if (quantidade <= 0) {
-                return "Quantidade inválida!";
+        
+            if (itens.length === 0) {
+                return "Não há itens no carrinho de compra!";
             }
-    
-            if (codigo === 'cafe') {
-                hasCafe = true;
-            }
-    
-            if (codigo === 'sanduiche') {
+        
+            let total = 0;
+            let itemsMap = {};
+            let hasCafe = false;
+            let hasSanduiche = false;
+        
+            for (const item of itens) {
+                const [codigo, quantidade] = item.split(',');
+                const menuItem = this.cardapio[codigo];
+        
+                if (!menuItem) {
+                    return "Item inválido!";
+                }
+        
+                if (quantidade <= 0) {
+                    return "Quantidade inválida!";
+                }
+        
+                if (codigo === 'cafe') {
+                    hasCafe = true;
+                }
+        
+                if (codigo === 'sanduiche') {
                 hasSanduiche = true;
             }
     
