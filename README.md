@@ -73,5 +73,5 @@
         }
     
         return `R$ ${total.toFixed(2)}`;
+        }
     }
-}
